@@ -5,11 +5,15 @@ import PropTypes from 'prop-types';
 export default function NewPostForm({ addNewPost }) {
   const [username, setUsername] = useState('');
   const [body, setBody] = useState('');
+  const [time, setTime] = useState('');
 
   const handleAddPost = () => {
-    addNewPost({ username, body });
+    addNewPost({ username, body, time });
     setUsername('');
     setBody('');
+    let date = new Date().toISOString();
+    console.log(date);
+    setTime(date);
   };
 
   return (

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
-export default function Post({username, body}) {
+export default function Post({username, body, time}) {
   return (
     <>
     <Text>
@@ -20,5 +20,6 @@ export default function Post({username, body}) {
 
 Post.propTypes = {
     username: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired
+    body: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
   };

@@ -10,16 +10,19 @@ export default function Feed({ navigation }) {
       _id: 1,
       username: 'James',
       body: 'Mobile development is fun!',
+      time: '2023-10-24T00:41:59.057Z',
     },
     {
       _id: 2,
       username: 'Sidd',
       body: 'I just finished watching another movie. It was interesting, but kind of boring :(',
+      time: '2023-10-23T00:41:59.057Z',
     },
     {
       _id: 3,
       username: 'Jerry',
       body: 'I am excited to see everyone become friends!',
+      time: '2023-10-25T00:41:59.057Z',
     },
   ]);
   const [newId, setNewId] = useState(0);
@@ -35,16 +38,21 @@ export default function Feed({ navigation }) {
     navigation.navigate('Landing');
   };
 
+  const navigateToPostDetails = (username, body, time) => {
+    navigation.navigate('Details', { username, body, time });
+  };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Posts</Text>
       <NewPostForm addNewPost={addNewPost} />
       {posts.map((post) => (
-        <Post id={post.id} username={post.username} body={post.body} />
+        <>
+        <Post id={post.id} username={post.username} body={post.body} time={post.time}/>
+        <Button title="Details" onPress={() => navigateToPostDetails(post.username, post.body, post.time)}/>
+        </>
       ))}
-
-      <Post username="pooch" body="hungry" />
-
+      
       <Button
         title="To Landing"
         onPress={navigateToLanding}
